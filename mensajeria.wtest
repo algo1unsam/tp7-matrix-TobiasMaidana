@@ -2,7 +2,40 @@ import mensajeria.*
 import mensajeros.*
 
 
-describe "2 " {}
+describe "Test de Mensajeria 2da parte" {
+    test "contratar mensajeros"{
+        mensajeria.contratar(trinity)
+        assert.equals(2, mensajeria.contratar(morfeo))
+    }
+    test "despedir a un mensajero"{
+        assert.equals(0, mensajeria.despedir(morfeo))
+    }
+
+    test "despedir a todos los mensajeros" {
+      assert.that(mensajeria.despedir())
+    }
+
+    test "mensajeria es grande (mas de 2 mensajeros)"{
+        mensajeria.contratar(trinity)
+        mensajeria.contratar(neo)
+        mensajeria.contratar(morfeo)
+        assert.that(mensajeria.esGrande())
+    }
+
+    test "un paquete puede ser entregado por el primer empleado de la empresa."{
+        mensajeria.contratar(trinity)
+        mensajeria.contratar(morfeo)
+        paquete.destino(matrix)
+        const comoLista = mensajeria.mensajeros().asList()
+        assert.that(paquete.puedeSerEntregadoPor(comoLista.first()))
+    }
+    test "saber el peso del último mensajero de la empresa" {
+        mensajeria.contratar(trinity)
+        mensajeria.contratar(neo)
+        mensajeria.contratar(morfeo)
+        assert.equals(590, mensajeria.pesoUltimoMensajero())
+    }
+}
 
 
-describe "3 " {}
+//describe "3 " {}

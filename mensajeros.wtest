@@ -49,8 +49,9 @@ describe "Test de mensajeros primera parte " {
 	    assert.notThat(paquete.puedeSerEntregadoPor(morfeo))
     }
 
-	test "un paquete pago no puede entregado por Morfeo en camion de 3 acoplados"{
+	test "un paquete pago no ser puede entregado por Morfeo en camion de 3 acoplados"{
 		paquete.pagar()
+		paquete.destino(puente)
         camion.acoplados(3)
 	    assert.notThat(paquete.puedeSerEntregadoPor(morfeo))
     }
